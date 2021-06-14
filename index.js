@@ -16,7 +16,7 @@
 function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
-console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
+console.log(processFirstItem(['foo', 'bar'], function (str) { return str + str }));
 
 // ⭐️ Example Challenge END ⭐️
 
@@ -39,7 +39,7 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
 function counterMaker() {
   let count = 0;
   return function counter() {
-   return count++;
+    return count++;
   }
 }
 
@@ -62,8 +62,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning() {
+  return Math.floor(Math.random() * 3);
 }
 
 
@@ -79,20 +79,35 @@ Use the finalScore function below to do the following:
   "Home": 11,
   "Away": 5
 }
-*/ 
+*/
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(callback, num) {
+  let Home = 0;
+  let Away = 0;
+  for (let i = 0; i < num; i++) {
+    Home = Home + callback();
+    Away = Away + callback();
+  }
+
+  return { Home, Away };
 }
+
+
+
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(callback) {
+  return {
+    Home: callback(),
+    Away: callback(),
+  }
+
 }
+getInningScore(inning);
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -136,19 +151,35 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, num) {
+  let homeFinal = 0;
+  let awayFinal = 0;
+
+  for (let i = 0; i < num; i++) {
+    let score = getInningScore(inning);
+
+    console.log(`Inning ${i + 1}: Away ${score.Away} - Home ${score.Home}`);
+    homeFinal = homeFinal + score.Home;
+    awayFinal = awayFinal + score.Away;
+  }
+  if (homeFinal !== awayFinal) {
+    console.log(`Fianl Score: Away ${awayFinal} - Home ${homeFinal}`);
+  } else {
+    console.log(`This game will require extra innings: Away ${awayFinal} - Home ${homeFinal}`);
+  }
+
 }
 
+scoreboard(getInningScore, inning, 3);
 
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
-function foo(){
+function foo() {
   //console.log('its working');
   return 'bar';
 }
-export default{
+export default {
   foo,
   processFirstItem,
   counter1,
