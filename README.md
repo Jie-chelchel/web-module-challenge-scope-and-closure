@@ -43,6 +43,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+   Closure give us the ability to put function together. It is the ability to access functions from a parent level scope even after the parent function has been terminated. A closure happens when a function reaches into its outer scope to grab a variable that's been defined elsewhere. 
+
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -64,8 +67,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+In this code, the closure is then the inside function newRoll gets the variable 'name' from its
+parent function. Because 'name' is passed to the function personalDice, and the function newRoll gets it from there. 
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+No, not the same. The value of newRoll could change since it is a value we get randomly. 
 c. What is the lexical scope of `newRoll`? 
+
 
 
 ### Task 3 - Stretch Goals
