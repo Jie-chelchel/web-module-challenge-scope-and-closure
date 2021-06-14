@@ -67,12 +67,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
-In this code, the closure is then the inside function newRoll gets the variable 'name' from its
-parent function. Because 'name' is passed to the function personalDice, and the function newRoll gets it from there. 
+It is used by calling dansRoll(). In this code, the closure is created when the inside function newRoll gets the variable 'name' from its parent function. Because 'name' is passed to the function personalDice, and the function newRoll gets it from there. 
 
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
 No, not the same. The value of newRoll could change since it is a value we get randomly. 
+
 c. What is the lexical scope of `newRoll`? 
+'newRoll' is not looking for any variable, so I think the answer here is no lexical scope for newRoll. 
 
 
 
